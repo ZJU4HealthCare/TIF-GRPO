@@ -1,0 +1,98 @@
+{
+  "data_source": "medical-report-abnormality",
+  "prompt": [
+    {
+      "role": "user",
+      "content": "<video>\nYou are a radiologist. Generate FINDINGS and IMPRESSION from the given chest CT."
+    }
+  ],
+  "videos": [
+    {
+      "type": "video",
+      "video": ["cases/chest_ct_00017.npy"],
+      "fps": 2,
+      "min_frames": 10,
+      "max_frames": 10
+    }
+  ],
+  "ability": "medical-report",
+  "reward_model": {
+    "style": "rule",
+    "ground_truth": "<findings> The trachea and both main bronchi are patent. A 9 mm spiculated nodule is present in the right upper lobe. Mild centrilobular emphysema is noted in the upper lobes. A small left pleural effusion is seen. The heart size is normal and there is no pericardial effusion. Mediastinal and hilar lymph nodes are not enlarged. In the visualized upper abdomen, a 12 mm simple cyst is noted in the right hepatic lobe. No suspicious osseous lesion is identified. </findings>\n<impression> Spiculated right upper lobe pulmonary nodule, suspicious for malignancy; further evaluation is recommended. Small left pleural effusion. Benign-appearing hepatic cyst. </impression>"
+  },
+  "extra_info": {
+    "split": "test",
+    "question": "You are a radiologist. Generate FINDINGS and IMPRESSION from the given chest CT.",
+    "answer": "<findings> The trachea and both main bronchi are patent. A 9 mm spiculated nodule is present in the right upper lobe. Mild centrilobular emphysema is noted in the upper lobes. A small left pleural effusion is seen. The heart size is normal and there is no pericardial effusion. Mediastinal and hilar lymph nodes are not enlarged. In the visualized upper abdomen, a 12 mm simple cyst is noted in the right hepatic lobe. No suspicious osseous lesion is identified. </findings>\n<impression> Spiculated right upper lobe pulmonary nodule, suspicious for malignancy; further evaluation is recommended. Small left pleural effusion. Benign-appearing hepatic cyst. </impression>",
+    "info": {
+      "findings_abnormality_entity": {
+        "abnormalities": [
+          {
+            "name": "pulmonary nodule",
+            "evidence": "A 9 mm spiculated nodule is present in the right upper lobe.",
+            "location": "right upper lobe",
+            "attributes": "9 mm, spiculated",
+            "certainty": "definite",
+            "organ": "lung_parenchyma"
+          },
+          {
+            "name": "emphysema",
+            "evidence": "Mild centrilobular emphysema is noted in the upper lobes.",
+            "location": "upper lobes",
+            "attributes": "mild, centrilobular",
+            "certainty": "definite",
+            "organ": "lung_parenchyma"
+          },
+          {
+            "name": "pleural effusion",
+            "evidence": "A small left pleural effusion is seen.",
+            "location": "left",
+            "attributes": "small",
+            "certainty": "definite",
+            "organ": "pleura"
+          },
+          {
+            "name": "hepatic cyst",
+            "evidence": "a 12 mm simple cyst is noted in the right hepatic lobe.",
+            "location": "right hepatic lobe",
+            "attributes": "12 mm, simple",
+            "certainty": "definite",
+            "organ": "other"
+          }
+        ],
+        "report_has_abnormality": true,
+        "abnormality_count": 4
+      },
+      "impression_abnormality_entity": {
+        "abnormalities": [
+          {
+            "name": "pulmonary nodule",
+            "evidence": "Spiculated right upper lobe pulmonary nodule, suspicious for malignancy",
+            "location": "right upper lobe",
+            "attributes": "spiculated, suspicious for malignancy",
+            "certainty": "definite",
+            "organ": "lung_parenchyma"
+          },
+          {
+            "name": "pleural effusion",
+            "evidence": "Small left pleural effusion.",
+            "location": "left",
+            "attributes": "small",
+            "certainty": "definite",
+            "organ": "pleura"
+          },
+          {
+            "name": "hepatic cyst",
+            "evidence": "Benign-appearing hepatic cyst.",
+            "location": "liver",
+            "attributes": "benign-appearing",
+            "certainty": "definite",
+            "organ": "other"
+          }
+        ],
+        "report_has_abnormality": true,
+        "abnormality_count": 3
+      }
+    }
+  }
+}
